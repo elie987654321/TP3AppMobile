@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">jeudepart</string>
+    <string name="lblTitle"> Entrez une valeur entre 1 et 100:</string>
+    <string name="btnCompare"> Comparer</string>
+    <string name="strGreater"> Veuillez saisir une valeur supérieure.</string>
+    <string name="strLower"> Veuillez saisir une valeur inférieure.</string>
+    <string name="strCongratulations"> Toutes nos félicitations</string>
+
+    <string name="strMessage"> Félicitations, vous gagnez aprés % d essais. Voulez-vous réessayer?</string>
+    <string name="strYes">Oui</string>
+    <string name="strNo">Non</string>
+</resources>
