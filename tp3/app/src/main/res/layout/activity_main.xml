@@ -24,61 +24,61 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
+        android:id="@+id/txtNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/txtNumber"
         android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toStartOf="@+id/btnCompare"
         android:layout_toLeftOf="@+id/btnCompare"
-        android:layout_toStartOf="@+id/btnCompare" />
+        android:ems="10"
+        android:inputType="number" />
 
     <Button
+        android:id="@+id/btnCompare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btnCompare"
-        android:id="@+id/btnCompare"
         android:layout_below="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
         android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:text="@string/btnCompare" />
 
     <TextView
+        android:id="@+id/lblResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/lblResult"
         android:layout_below="@+id/btnCompare"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/btnCompare"
         android:layout_alignRight="@+id/btnCompare"
-        android:layout_alignEnd="@+id/btnCompare" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ProgressBar
+        android:id="@+id/pgbScore"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pgbScore"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/lblResult"
-        android:layout_alignRight="@+id/lblResult"
         android:layout_alignEnd="@+id/lblResult"
+        android:layout_alignRight="@+id/lblResult"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:indeterminate="false"
         android:max="10"
         android:progress="8" />
 
     <TextView
+        android:id="@+id/lblHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/lblHistory"
         android:layout_below="@+id/pgbScore"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/pgbScore"
         android:layout_alignRight="@+id/pgbScore"
-        android:layout_alignEnd="@+id/pgbScore" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
