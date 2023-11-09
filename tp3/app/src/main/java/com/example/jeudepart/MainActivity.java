@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
             txtNumber.setText("");
             txtNumber.requestFocus();
-
         }
     };
-
 }

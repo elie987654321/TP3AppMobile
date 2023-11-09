@@ -9,4 +9,6 @@
     <string name="strMessage"> Félicitations, vous gagnez aprés % d essais. Voulez-vous réessayer?</string>
     <string name="strYes">Oui</string>
     <string name="strNo">Non</string>
+    <string name="authentification">Veuillez vous authentifier(a changer)</string>
+    <string name="connection">Chaine connexion(a changer)</string>
 </resources>
