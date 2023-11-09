@@ -16,7 +16,7 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class JeuxActivity extends AppCompatActivity {
 
     private EditText txtNumber;
     private Button btnCompare;

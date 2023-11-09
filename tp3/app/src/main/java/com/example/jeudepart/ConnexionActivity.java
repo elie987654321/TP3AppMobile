@@ -1,5 +1,6 @@
 package com.example.jeudepart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -53,6 +54,12 @@ public class ConnexionActivity extends AppCompatActivity {
         return matcher.find();
     }
     public void connectionOnClick(View view) {
+        Intent intent = new Intent(ConnexionActivity.this, JeuxActivity.class);
+        startActivity(intent);
+    }
 
+    public void creationOnClick(View view){
+        Intent intent = new Intent(ConnexionActivity.this, CreationActivity.class);
+        startActivity(intent);
     }
 }
