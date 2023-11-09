@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="32dp"
-        android:text="@strings/authentication"
+        android:text="@string/authentification"
         android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@strings/email" />
+                android:text="@string/email" />
 
             <EditText
                 android:id="@+id/emailEdit"
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@strings/password" />
+                android:text="@string/password" />
 
             <EditText
                 android:id="@+id/passwordEdit"
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="connectionOnClick"
-            android:text="@strings/connection" />
+            android:text="@string/connection" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

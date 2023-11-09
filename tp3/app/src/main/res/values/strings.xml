@@ -5,7 +5,8 @@
     <string name="strGreater"> Veuillez saisir une valeur supérieure.</string>
     <string name="strLower"> Veuillez saisir une valeur inférieure.</string>
     <string name="strCongratulations"> Toutes nos félicitations</string>
-
+    <string name="email">email</string>
+    <string name="password">password</string>
     <string name="strMessage"> Félicitations, vous gagnez aprés % d essais. Voulez-vous réessayer?</string>
     <string name="strYes">Oui</string>
     <string name="strNo">Non</string>
