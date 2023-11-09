@@ -17,4 +17,5 @@
     <string name="inscription">Inscription</string>
     <string name="connection">connexion</string>
     <string name="creation">creer un compte</string>
+    <string name="creationNouveau">creer un nouveau compte</string>
 </resources>

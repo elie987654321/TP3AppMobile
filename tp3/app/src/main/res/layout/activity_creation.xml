@@ -144,16 +144,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonConnection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/connection" />
-
-    <Button
         android:id="@+id/buttonCreation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/creation" />
+        android:text="@string/creationNouveau" />
   </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
