@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 
 public class ConnexionActivity extends AppCompatActivity {
     private EditText emailInput;
-    private Button buttonConnection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
