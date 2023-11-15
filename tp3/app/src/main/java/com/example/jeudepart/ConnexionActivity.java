@@ -40,6 +40,10 @@ public class ConnexionActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!isEmailValid(emailInput.getText().toString())){
+                    emailInput.setError("Email non valide");
+                }
+
                 if (!isEmailValid(emailInput.getText().toString()) || !isPasswordValid(passwordInput.getText().toString())) {
                     buttonConnection.setEnabled(false); // Désactiver le bouton si l'email ou le mot de passe n'est pas valide
                 } else {
@@ -59,9 +63,6 @@ public class ConnexionActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!isEmailValid(emailInput.getText().toString())){
-                    emailInput.setError("Adresse Courriel non valide");
-                }
                 if (!isPasswordValid(passwordInput.getText().toString())){
                     passwordInput.setError("Mot de passe non valide");
                 }
