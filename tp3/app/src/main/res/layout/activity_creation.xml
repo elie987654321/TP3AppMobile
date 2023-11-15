@@ -147,6 +147,7 @@
         android:id="@+id/buttonCreation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="creationCompteOnClick"
         android:text="@string/creationNouveau" />
   </LinearLayout>
 

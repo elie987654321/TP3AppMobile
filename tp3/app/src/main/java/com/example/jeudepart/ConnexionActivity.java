@@ -18,6 +18,7 @@ public class ConnexionActivity extends AppCompatActivity {
     private EditText passwordInput;
     private Button buttonConnection;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
