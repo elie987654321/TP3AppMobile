@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +12,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class JeuxActivity extends AppCompatActivity {
@@ -26,17 +38,35 @@ public class JeuxActivity extends AppCompatActivity {
 
     private int searchedValue;
     private int score;
+    int user_id;
+    String prenom;
+    String nom;
+    String email;
+    String password;
+    String pays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Retrieve data from intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            user_id = intent.getIntExtra("user_id", 0);
+            prenom = intent.getStringExtra("prenom");
+            nom = intent.getStringExtra("nom");
+            email = intent.getStringExtra("email");
+            password = intent.getStringExtra("password");
+            pays = intent.getStringExtra("pays");
+        }
+
         txtNumber = (EditText) findViewById(R.id.txtNumber);
         btnCompare = (Button) findViewById(R.id.btnCompare);
         lblResult = (TextView) findViewById(R.id.lblResult);
         pgbScore = (ProgressBar) findViewById(R.id.pgbScore);
         lblHistory = (TextView) findViewById(R.id.lblHistory);
+
 
         btnCompare.setOnClickListener(btnCompareListener);
 
@@ -64,6 +94,9 @@ public class JeuxActivity extends AppCompatActivity {
     }
 
     private void congratulations() {
+
+        createScore();
+
         lblResult.setText(R.string.strCongratulations);
 
         AlertDialog retryAlert = new AlertDialog.Builder(this).create();
@@ -112,4 +145,32 @@ public class JeuxActivity extends AppCompatActivity {
             txtNumber.requestFocus();
         }
     };
+
+    private void createScore(){
+        // Create a JSONObject to hold the data
+        JSONObject requestData = new JSONObject();
+        try {
+           requestData.put("user_id", String.valueOf(user_id));
+            requestData.put("score",String.valueOf(score));
+            requestData.put("scoreDate", LocalDateTime.now().toLocalDate());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://app-mobile-api.vercel.app/api/createScore";
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, requestData,
+                response -> {
+
+                },
+                error -> {
+                    Toast.makeText(JeuxActivity.this, "Error calling API", Toast.LENGTH_SHORT).show();
+                });
+
+        queue.add(jsonObjectRequest);
+    }
 }

@@ -90,6 +90,13 @@
             android:layout_height="wrap_content"
             android:onClick="creationOnClick"
             android:text="@string/creation" />
+
+        <Button
+            android:id="@+id/buttonScores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="scoresOnClick"
+            android:text="@string/scores" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

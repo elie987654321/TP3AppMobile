@@ -18,4 +18,5 @@
     <string name="connection">connexion</string>
     <string name="creation">creer un compte</string>
     <string name="creationNouveau">creer un nouveau compte</string>
+    <string name="scores">Afficher les scores</string>
 </resources>

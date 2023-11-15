@@ -18,6 +18,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -198,7 +207,40 @@ public class CreationActivity extends AppCompatActivity {
     }
 
     public void creationCompteOnClick(View view) {
-        Intent intent = new Intent(CreationActivity.this, JeuxActivity.class);
-        startActivity(intent);
+        if (!buttonCreation.isEnabled()) {
+            return; // If the button is disabled, return without making the API call
+        }
+
+        // Create a JSONObject to hold the user data
+        JSONObject userData = new JSONObject();
+        try {
+            userData.put("prenom", prenomEdit.getText().toString());
+            userData.put("nom", nomEdit.getText().toString());
+            userData.put("email", emailEdit.getText().toString());
+            userData.put("password", passwordEdit.getText().toString());
+            userData.put("pays", ((SpinnerItem) spinner.getSelectedItem()).getText()); // Assuming SpinnerItem has getText() method
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return; // If JSON creation fails, return without making the API call
+        }
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://app-mobile-api.vercel.app/api/createUser";
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, userData,
+                response -> {
+                    // Handle successful API response
+                    Toast.makeText(CreationActivity.this, "User created successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CreationActivity.this, ConnexionActivity.class);
+                    startActivity(intent);
+                },
+                error -> {
+                    // Handle error response
+                    Toast.makeText(CreationActivity.this, "Error creating user", Toast.LENGTH_SHORT).show();
+                });
+
+        queue.add(jsonObjectRequest);
     }
 }
