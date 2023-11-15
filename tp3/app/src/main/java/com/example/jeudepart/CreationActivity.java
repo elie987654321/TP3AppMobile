@@ -1,15 +1,25 @@
 package com.example.jeudepart;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,12 +30,61 @@ public class CreationActivity extends AppCompatActivity {
     private EditText emailEdit;
     private EditText passwordEdit;
     private Button buttonCreation;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation);
         initEditField();
+
+        // Initialize Spinner
+        spinner = findViewById(R.id.spinner);
+
+        ArrayList<SpinnerItem> spinnerItems = new ArrayList<>();
+        spinnerItems.add(new SpinnerItem("canada", R.drawable.canada));
+        spinnerItems.add(new SpinnerItem("france", R.drawable.france));
+        spinnerItems.add(new SpinnerItem("etats-unis", R.drawable.united_states_of_america));
+        spinnerItems.add(new SpinnerItem("allemagne", R.drawable.germany));
+        spinnerItems.add(new SpinnerItem("russie", R.drawable.russian_federation));
+
+        CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, spinnerItems);
+        spinner.setAdapter(adapter);
+    }
+
+    private class CustomSpinnerAdapter extends ArrayAdapter<SpinnerItem> {
+
+        CustomSpinnerAdapter(Context context, ArrayList<SpinnerItem> spinnerItems) {
+            super(context, 0, spinnerItems);
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            return createItemView(position, convertView, parent);
+        }
+
+        @Override
+        public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            return createItemView(position, convertView, parent);
+        }
+
+        private View createItemView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_spinner_item, parent, false);
+            }
+
+            ImageView imageView = convertView.findViewById(R.id.spinnerItemImageView);
+            TextView textView = convertView.findViewById(R.id.spinnerItemTextView);
+
+            SpinnerItem currentItem = getItem(position);
+            if (currentItem != null) {
+                imageView.setImageResource(currentItem.getImageResId());
+                textView.setText(currentItem.getText());
+            }
+
+            return convertView;
+        }
     }
 
     private void initEditField() {
